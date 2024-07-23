@@ -10,5 +10,5 @@
     ```
 3. Run the web server:
     ```bash
-    docker compose run app -p 5000:5000 flask --app src/app run --host=0.0.0.0
+    docker compose run -p 5000:5000 app flask --app src/app run --host=0.0.0.0
     ```
