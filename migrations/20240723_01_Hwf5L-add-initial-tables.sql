@@ -4,7 +4,8 @@
 CREATE TABLE product (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
-    brand_id integer NOT NULL
+    brand_id integer NOT NULL,
+    is_premium boolean NOT NULL DEFAULT false
 );
 
 ALTER TABLE product ADD CONSTRAINT pk_product PRIMARY KEY (id);
@@ -18,11 +19,13 @@ CREATE TABLE product_day (
 
 ALTER TABLE product_day ADD CONSTRAINT fk_product_day_product_id FOREIGN KEY (product_id) REFERENCES product (id);
 
-INSERT INTO product (id, name, brand_id) VALUES (1, 'KnitFlex Craft Mesh Oxfords', 1);
-INSERT INTO product (id, name, brand_id) VALUES (2, 'Afterburn M. Fit', 2);
-INSERT INTO product (id, name, brand_id) VALUES (3, 'V5 Casual Comfort Cross Trainer', 3);
-INSERT INTO product (id, name, brand_id) VALUES (4, 'Ownthegame Basketball Shoe', 4);
-INSERT INTO product (id, name, brand_id) VALUES (5, 'Oxfords Shoes Casual', 5);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (1, 'KnitFlex Craft Mesh Oxfords', 1, FALSE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (2, 'Afterburn M. Fit', 2, FALSE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (3, 'V5 Casual Comfort Cross Trainer', 3, TRUE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (4, 'Ownthegame Basketball Shoe', 4, FALSE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (5, 'Oxfords Shoes Casual', 5, TRUE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (6, 'Eureka Walking', 2, TRUE);
+INSERT INTO product (id, name, brand_id, is_premium) VALUES (7, 'Charged Surge', 3, FALSE);
 
 INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-01', 1, 532.00);
 INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-02', 1, 235.00);
@@ -183,3 +186,67 @@ INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-28', 5, 35.0
 INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-29', 5, 8.00);
 INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-30', 5, 220.00);
 INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-31', 5, 210.00);
+
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-01', 6, 20.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-02', 6, 50.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-03', 6, 40.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-04', 6, 2200.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-05', 6, 70.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-06', 6, 30.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-07', 6, 560.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-08', 6, 50.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-09', 6, 50.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-10', 6, 590.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-11', 6, 52.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-12', 6, 45.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-13', 6, 41.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-14', 6, 56.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-15', 6, 42.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-16', 6, 3.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-17', 6, 5.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-18', 6, 5.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-19', 6, 550.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-20', 6, 590.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-21', 6, 7.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-22', 6, 9.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-23', 6, 2.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-24', 6, 3.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-25', 6, 56.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-26', 6, 76.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-27', 6, 51.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-28', 6, 60.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-29', 6, 67.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-30', 6, 50.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-31', 6, 40.00);
+
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-01', 7, 52.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-02', 7, 55.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-03', 7, 41.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-04', 7, 63.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-05', 7, 43.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-06', 7, 101.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-07', 7, 561.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-08', 7, 50.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-09', 7, 5600.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-10', 7, 6100.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-11', 7, 44.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-12', 7, 65.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-13', 7, 41.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-14', 7, 43.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-15', 7, 53.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-16', 7, 601.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-17', 7, 31.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-18', 7, 10.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-19', 7, 600.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-20', 7, 500.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-21', 7, 2.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-22', 7, 5.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-23', 7, 1.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-24', 7, 63.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-25', 7, 53.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-26', 7, 501.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-27', 7, 601.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-28', 7, 190.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-29', 7, 200.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-30', 7, 400.00);
+INSERT INTO product_day (day, product_id, revenue) VALUES ('2024-07-31', 7, 900.00);
