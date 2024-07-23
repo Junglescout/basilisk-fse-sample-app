@@ -1,0 +1,38 @@
+services:
+  postgres_db:
+    container_name: app_db
+    image: postgres:15.3
+    user: postgres
+    environment:
+      - POSTGRES_DB_TEST=app_test
+      - POSTGRES_DB=${DB_NAME:-app}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    healthcheck:
+      test: /usr/bin/pg_isready
+      interval: 5s
+      timeout: 10s
+      retries: 120
+    ports:
+      - "127.0.0.1:5438:5432"
+    volumes:
+      - ./bin/db:/docker-entrypoint-initdb.d
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /var/task/app
+    environment:
+      - DB_NAME=${DB_NAME:-app}
+      - DB_HOST=${DB_HOST:-postgres_db}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+      - DB_PORT=5432
+      - FLASK_DEBUG=1
+    depends_on:
+      - postgres_db
+    volumes:
+      - .:/var/task/app
+    stdin_open: true
+    tty: true

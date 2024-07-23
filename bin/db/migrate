@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+set -u
+
+echo "Running migrations"
+
+if command -v python >/dev/null 2>&1; then
+    python -m yoyo apply --database postgresql+psycopg://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/app
+    echo "Migrations complete ✅"
+else
+    echo "Python is not installed. Skipping script execution."
+fi
